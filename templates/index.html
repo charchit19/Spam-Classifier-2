@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spam Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+    <h1>Spam Detection</h1>
+    <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+        <h3>Enter a message below to detect whether a message is spam or ham (not spam).</h3>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message"><br><br>
+        <label for="file">Or upload a file:</label>
+        <input type="file" id="file" name="file"><br><br>
+        <input type="submit" value="Predict">
+        {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+    </form>
+</body>
+
+</html>
